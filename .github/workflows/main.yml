@@ -15,8 +15,8 @@ jobs:
       - name: Upload artifact to enable deployment
         uses: actions/upload-artifact@v4
         with:
-          name: html-files
-          path: index.html
+          name: txt-files
+          path: example.txt
 
   deploy:
     needs: build
@@ -30,12 +30,12 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: html-files
-          path: ./html
+          name: txt-files
+          path: ./txt
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.SECRET }}
           publish_branch: gh-pages  # Explicitly deploy to gh-pages
-          publish_dir: ./html
+          publish_dir: ./txt
